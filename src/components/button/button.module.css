@@ -1,0 +1,9 @@
+.secondaryBtn {
+    border: solid 1px var(--primary-color);
+    color: var(--secondary-color-text);
+    background-color: transparent;
+}
+
+.secondaryBtn:active {
+    background-color: var(--secondary-color-faint);
+}

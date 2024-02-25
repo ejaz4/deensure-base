@@ -1,0 +1,76 @@
+:root {
+	--body-bg: #fff;
+	--text-color: #000;
+	--text-color-faint: rgba(0,0,0,0.1);
+	--primary-color: #007bff;
+	--primary-color-faint: #0063cc;
+	--primary-color-text: #fff;
+	--secondary-color: var(--primary-color);
+	--secondary-color-faint: rgba(0,0,0,0.1);
+	--secondary-color-text: var(--primary-color);
+	--success-color: #28a745;
+	--info-color: #17a2b8;
+	--warning-color: #ffc107;
+	--danger-color: #dc3545;
+	--light-color: #f8f9fa;
+	--font-family: "Inter", sans-serif;
+	--dark-color: #343a40;
+}
+
+@font-face {
+	font-family: "Inter";
+	src: url(/fonts/InterVariable.woff2) format("woff2");
+}
+
+body {
+	background-color: var(--body-bg);
+	margin: 0;
+	color: var(--text-color);
+	font-family: var(--font-family);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
+	color: var(--text-color);
+	margin: 0;
+}
+
+p,
+span,
+label {
+	font-size: 18px;
+	text-align: center;
+}
+
+
+button {
+	background-color: var(--primary-color);
+	border: none;
+	font-family: var(--font-family);
+	color: var(--body-bg);
+	cursor: pointer;
+	box-sizing: border-box;
+	padding-top: 16px;
+	padding-bottom: 16px;
+	font-size: 18px;
+	width: 100%;
+	border-radius: 0.25rem;
+	outline: none;
+	transition: background-color 0.3s ease;
+}
+
+button:active {
+	background-color: var(--primary-color-faint);
+	transition: none 0.3s ease;
+}
+
+
+.disclaimer {
+	opacity: 0.6;
+}
