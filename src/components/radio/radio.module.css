@@ -1,0 +1,42 @@
+.radioContainer {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	box-sizing: border-box;
+	border-radius: 16px;
+	overflow: hidden;
+	box-shadow: 0px 7px 11.8px 0px rgba(0, 0, 0, 0.1);
+	box-shadow: 0px 7px 11.8px 0px color(display-p3 0 0 0 / 0.1);
+}
+
+.radioItem {
+	font-size: 16px;
+	display: flex;
+	padding: 16px 24px;
+	justify-content: center;
+	align-items: center;
+	box-sizing: border-box;
+	width: 100%;
+	gap: 10px;
+	/* border-radius: 0px; */
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border: 1px solid color(display-p3 0 0 0 / 0.1);
+	background: #fff;
+	background: color(display-p3 1 1 1);
+	transition: background-color 0.3s ease;
+}
+
+.selected {
+	background: color(display-p3 0.0667 0.1098 0.4314);
+	color: white;
+}
+
+.selected * {
+	color: white;
+}
+
+.radioItem:active {
+	background-color: rgba(0, 0, 0, 0.1);
+	background-color: color(display-p3 0 0 0 / 0.1);
+	transition: none;
+}

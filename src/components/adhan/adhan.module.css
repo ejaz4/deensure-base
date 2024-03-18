@@ -1,46 +1,70 @@
-.nextPrayerModule {
-	background-color: var(--text-color-faint);
-	border-radius: 200px;
-	padding: 16px;
+.nextPrayer {
+	width: 100%;
+	position: relative;
+	box-sizing: border-box;
+	overflow: hidden;
+	height: 200px;
+	border-radius: 18px;
+	color: white;
+}
+
+.nextPrayer * {
+	color: white;
+}
+
+.featureIndicator {
+	padding: 12px;
 	width: fit-content;
+	border-radius: 10px;
+	background-color: rgba(0, 0, 0, 0.4);
 }
 
-.nextPrayerCounting {
+.featureIndicator svg {
+	display: block;
+}
+
+.nextPrayerContent {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	gap: 8px;
-	animation: countingLeave 0.25s ease forwards 2s;
+	justify-content: space-between;
+	height: 100%;
+	padding: 20px;
+	box-sizing: border-box;
+	z-index: 1;
 }
 
-.nextPrayerStatic {
+.nextPrayerSub {
+	display: flex;
+	justify-content: space-between;
+}
+
+.nextPrayerText {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	gap: 8px;
-	animation: staticEnter 0.5s ease forwards;
+	justify-content: flex-end;
+	align-items: flex-start;
 }
 
-@keyframes countingLeave {
-	0% {
-		opacity: 1;
-		transform: translateY(0);
-	}
-	100% {
-		opacity: 0;
-		transform: translateY(-20px);
-	}
+.nextPrayerName {
+	opacity: 0.6;
 }
 
-@keyframes staticEnter {
-	0% {
-		opacity: 0;
-		transform: translateY(20px);
-	}
-	100% {
-		opacity: 1;
-		transform: translateY(0);
-	}
+.nextPrayerBackdrop {
+	position: absolute;
+	z-index: -1;
+}
+
+.nextPrayerBackdrop,
+.nextPrayerBackdrop img,
+.nextPrayerBackdrop div {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+}
+
+.nextPrayerNoise {
+	opacity: 0.2;
+	background-image: url("/images/backdrops/noise.png");
+	background-repeat: repeat;
 }

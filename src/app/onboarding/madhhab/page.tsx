@@ -4,21 +4,21 @@ import React, { useEffect, useState } from "react";
 import Logo from "@/assets/svg/logo-64-dark.svg";
 import { Button } from "@/components/button";
 import styles from "../onboarding.module.css";
-import { AutoObtainCity } from "@/libs/location";
-import { Dialogue, LoadStorageFile } from "@/libs/mal";
 import { useRouter } from "next/navigation";
 import { DevicePadding, DevicePaddingType } from "@/components/device/padding";
 import { useRef } from "react";
 
 import backgrounds from "../backgrounds.module.css";
-import { ChevronRight, RotateCw } from "lucide-react";
+import { Check, ChevronLeft, ChevronRight, RotateCw } from "lucide-react";
+import { Radio } from "@/components/radio";
+import { SaveStorageFile } from "@/libs/mal";
 
-const DonePage = () => {
+const MadhhabPage = () => {
 	const screenContent = useRef<HTMLDivElement>(null);
 	const screenBackground = useRef<HTMLDivElement>(null);
 	const router = useRouter();
 
-	const [city, setCity] = useState("");
+	const [selectedMadhhab, setSelectedMadhhab] = useState<string>("hanafi");
 
 	const goToUrl = (url: string) => {
 		if (screenContent.current) {
@@ -40,17 +40,6 @@ const DonePage = () => {
 		}
 	};
 
-	const getLocationFromFile = async () => {
-		const location = await LoadStorageFile("coords");
-		if (location) {
-			setCity(JSON.parse(location).city);
-		}
-	};
-
-	useEffect(() => {
-		getLocationFromFile();
-	}, []);
-
 	return (
 		<div
 			ref={screenBackground}
@@ -71,34 +60,40 @@ const DonePage = () => {
 				</div>
 
 				<div className={styles.setupText}>
-					<h1>You&apos;re in {city}</h1>
+					<h1>Which Madhhab do you follow?</h1>
+
+					<p>Please choose the Madhhab you follow.</p>
 					<p>
-						Your location is set to {city}. You can change this in
-						settings at any time.
+						Your choice may change the Asr time displayed in the
+						app.
 					</p>
 
-					<p>
-						If you have provided location access, deensure will
-						periodically use your location again to update your city
-						incase you leave {city}, but this behaviour can be
-						turned off in settings.
-					</p>
+					<Radio
+						hook={setSelectedMadhhab}
+						options={{
+							hanafi: "Hanafi",
+							shafi: "Shafi'i",
+							maliki: "Maliki",
+							hanbali: "Hanbali",
+						}}
+					/>
 				</div>
 
 				<div className={styles.horizButtonContainer}>
 					<Button
 						onClick={async () => {
-							goToUrl("/onboarding/setup");
+							goToUrl("/onboarding/done");
 						}}
-						image={<RotateCw size={16} />}
+						image={<ChevronLeft size={16} />}
 					/>
 					<Button
 						onClick={async () => {
-							goToUrl("/onboarding/madhhab");
+							goToUrl("/default/adhaan");
+							SaveStorageFile("madhhab", selectedMadhhab);
 						}}
-						image={<ChevronRight size={16} />}
+						image={<Check size={16} />}
 					>
-						Next
+						Bismillah
 					</Button>
 				</div>
 			</div>
@@ -106,4 +101,4 @@ const DonePage = () => {
 	);
 };
 
-export default DonePage;
+export default MadhhabPage;
