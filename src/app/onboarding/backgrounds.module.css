@@ -1,0 +1,65 @@
+.blue {
+	background: linear-gradient(
+		180deg,
+		color(display-p3 0.0667 0.1098 0.4314) 0%,
+		color(display-p3 1 1 1) 38.5%
+	);
+
+	background-size: 200% 200%;
+
+	animation: enterFromTop 2s cubic-bezier(0, -0.01, 0, 0.99) forwards;
+	transform: translateZ(0.1px);
+}
+
+.bubblyRainbow {
+	background: url("/images/backdrops/bubbly-rainbow.png") no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	background-size: 400%;
+}
+
+.bubblyRainbowEntry {
+	animation: bubblyCustomEntry 2s cubic-bezier(0, -0.01, 0, 0.99) forwards;
+	transform: translateZ(0.1px);
+}
+
+@keyframes bubblyCustomEntry {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.fadeDownEntry {
+	animation: enterFromTop 2s cubic-bezier(0, -0.01, 0, 0.99) forwards;
+	transform: translateZ(0.1px);
+}
+
+@keyframes enterFromTop {
+	0% {
+		opacity: 0;
+		background-position: 0% 100%;
+	}
+	100% {
+		opacity: 1;
+		background-position: 0% 0%;
+	}
+}
+
+.fadeUpExit {
+	animation: exitToTop 1s cubic-bezier(0.35, -0.01, 0.38, 0.99) forwards;
+	transform: translateZ(0.1px);
+}
+
+@keyframes exitToTop {
+	0% {
+		opacity: 1;
+		/* background-position: 0% 0%; */
+	}
+	100% {
+		opacity: 0;
+		/* background-position: 0% 100%; */
+	}
+}

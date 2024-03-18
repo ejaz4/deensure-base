@@ -32,6 +32,29 @@ export const LoadStorageFile = async (fileName: string) => {
 	return ls.getItem(fileName);
 };
 
+export enum HapticType {
+	Light,
+	Medium,
+	Heavy,
+}
+
+export const Haptic = (
+	type: HapticType.Light | HapticType.Medium | HapticType.Heavy
+) => {
+	if (!window.navigator.vibrate) return;
+	switch (type) {
+		case HapticType.Light:
+			window.navigator.vibrate(10);
+			break;
+		case HapticType.Medium:
+			window.navigator.vibrate(50);
+			break;
+		case HapticType.Heavy:
+			window.navigator.vibrate(100);
+			break;
+	}
+};
+
 export const Dialogue = (message: string) => {
 	alert(message);
 };

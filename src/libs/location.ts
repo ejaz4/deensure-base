@@ -2,9 +2,9 @@
 // Allows for private, offline and on-device location services and geocoding.
 
 import { GetLocation, SaveStorageFile } from "./mal";
-import { getNearestCity } from "offline-geocode-city";
-
-export let geocoderStarted = false;
+import { findPlaceByCoordinate } from "offline-country-or-place-locator";
+import CitiesJSON from "@/assets/geo/cities.json";
+import title from "title";
 
 export const AutoObtainCity = async () => {
 	// Automatically geocode city.
@@ -15,13 +15,18 @@ export const AutoObtainCity = async () => {
 
 	if (!position) return false;
 
-	const city = getNearestCity(position.latitude, position.longitude);
-	SaveStorageFile(
+	const city = await findPlaceByCoordinate(
+		CitiesJSON as any,
+		position.latitude,
+		position.longitude
+	);
+
+	await SaveStorageFile(
 		"coords",
 		JSON.stringify({
 			latitude: position.latitude,
 			longitude: position.longitude,
-			city: city,
+			city: title(city.properties.NAME),
 		})
 	);
 	return true;

@@ -1,9 +1,60 @@
 .secondaryBtn {
-    border: solid 1px var(--primary-color);
-    color: var(--secondary-color-text);
-    background-color: transparent;
+	border: solid 1px var(--primary-color);
+	color: var(--secondary-color-text);
+	background-color: transparent;
 }
 
 .secondaryBtn:active {
-    background-color: var(--secondary-color-faint);
+	background-color: var(--secondary-color-faint);
+}
+
+.button {
+	font-size: 16px;
+	display: flex;
+	padding: 16px 24px;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	border-radius: 32px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border: 1px solid color(display-p3 0 0 0 / 0.1);
+	background: #fff;
+	background: color(display-p3 1 1 1);
+	box-shadow: 0px 7px 11.8px 0px rgba(0, 0, 0, 0.1);
+	box-shadow: 0px 7px 11.8px 0px color(display-p3 0 0 0 / 0.1);
+	transform: scale(1);
+	transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.button:active {
+	background-color: rgba(0, 0, 0, 0.1);
+	background-color: color(display-p3 0 0 0 / 0.1);
+	transform: scale(0.9);
+	transition: transform 0.3s ease;
+}
+
+.noText {
+	padding: 16px 18px;
+}
+
+.primary {
+	background: #0e1c73;
+	background: color(display-p3 0.0667 0.1098 0.4314);
+	color: white;
+}
+.primary * {
+	color: white;
+}
+
+.spinner {
+	animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
 }

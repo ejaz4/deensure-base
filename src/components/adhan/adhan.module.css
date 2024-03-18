@@ -1,0 +1,46 @@
+.nextPrayerModule {
+	background-color: var(--text-color-faint);
+	border-radius: 200px;
+	padding: 16px;
+	width: fit-content;
+}
+
+.nextPrayerCounting {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	animation: countingLeave 0.25s ease forwards 2s;
+}
+
+.nextPrayerStatic {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	animation: staticEnter 0.5s ease forwards;
+}
+
+@keyframes countingLeave {
+	0% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+	100% {
+		opacity: 0;
+		transform: translateY(-20px);
+	}
+}
+
+@keyframes staticEnter {
+	0% {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}

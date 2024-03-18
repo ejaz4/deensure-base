@@ -1,12 +1,12 @@
 :root {
 	--body-bg: #fff;
 	--text-color: #000;
-	--text-color-faint: rgba(0,0,0,0.1);
+	--text-color-faint: rgba(0, 0, 0, 0.1);
 	--primary-color: #007bff;
 	--primary-color-faint: #0063cc;
 	--primary-color-text: #fff;
 	--secondary-color: var(--primary-color);
-	--secondary-color-faint: rgba(0,0,0,0.1);
+	--secondary-color-faint: rgba(0, 0, 0, 0.1);
 	--secondary-color-text: var(--primary-color);
 	--success-color: #28a745;
 	--info-color: #17a2b8;
@@ -29,6 +29,10 @@ body {
 	font-family: var(--font-family);
 }
 
+* {
+	-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+
 h1,
 h2,
 h3,
@@ -44,25 +48,9 @@ span {
 p,
 span,
 label {
-	font-size: 18px;
+	font-size: 16px;
+	display: block;
 	text-align: center;
-}
-
-
-button {
-	background-color: var(--primary-color);
-	border: none;
-	font-family: var(--font-family);
-	color: var(--body-bg);
-	cursor: pointer;
-	box-sizing: border-box;
-	padding-top: 16px;
-	padding-bottom: 16px;
-	font-size: 18px;
-	width: 100%;
-	border-radius: 0.25rem;
-	outline: none;
-	transition: background-color 0.3s ease;
 }
 
 button:active {
@@ -70,7 +58,30 @@ button:active {
 	transition: none 0.3s ease;
 }
 
+button {
+	font-family: var(--font-family);
+	font-weight: 500;
+}
 
 .disclaimer {
 	opacity: 0.6;
+}
+
+h1 {
+	font-size: 24px;
+}
+
+span {
+	font-size: 16px;
+}
+
+.clickableButton {
+	font-weight: 500;
+	transform: scale(1);
+	transition: transform 0.3s ease;
+}
+
+.clickableButton:active {
+	transform: scale(0.95);
+	transition: transform 0.3s ease;
 }

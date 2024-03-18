@@ -1,23 +1,150 @@
-.onboarding {
-	width: 100%;
+.screenContent {
+	display: flex;
 	height: 100vh;
-	min-height: fit-content;
 	box-sizing: border-box;
+	width: 100%;
+	justify-content: start;
+	flex-direction: column;
+	align-items: center;
+	padding: 32px 16px;
+	gap: 32px;
+}
+
+.fadeUp {
+	animation: fadeUp 0.75s cubic-bezier(0.35, -0.01, 0.38, 0.99) forwards;
+	transform: translateZ(0.1px);
+}
+
+.fadeUpEntry {
+	animation: fadeUpEntry 0.75s cubic-bezier(0, 0.46, 0, 1) forwards;
+	transform: translateZ(0.1px);
+}
+
+@keyframes fadeUpEntry {
+	0% {
+		opacity: 0;
+		transform: translateY(100px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0%);
+	}
+}
+
+@keyframes fadeUp {
+	0% {
+		opacity: 1;
+		transform: translateY(0%);
+	}
+	100% {
+		opacity: 0;
+		transform: translateY(-100px);
+	}
+}
+
+.welcomeHeader {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	color: white;
+	width: 100%;
+}
+
+.welcomeHeader > div {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.welcomeHeader > div:last-child {
+	justify-content: flex-end;
+}
+
+.welcomeHeader > div:first-child {
+	justify-content: flex-start;
+}
+
+.welcomeText {
+	display: flex;
+	justify-content: start;
+	flex-direction: column;
+	gap: 8px;
+	text-align: center;
+}
+
+.welcomeText span {
+	opacity: 0.5;
+}
+
+.welcomeItem img {
+	width: 100%;
+}
+
+.welcomeCarousel {
+	display: flex;
+	gap: 16px;
+	height: 100%;
+	width: 100%;
+	max-width: 100%;
+	overflow-x: auto;
+	scroll-snap-type: x mandatory;
+}
+
+.welcomeItem {
+	scroll-snap-align: none start;
+	display: flex;
+	width: 100%;
+	min-width: 100%;
+	flex-direction: column;
+	height: 100%;
+	align-items: center;
+	justify-content: center;
+	gap: 32px;
+}
+
+.welcomeButtonContainer,
+.horizButtonContainer {
+	display: flex;
+	justify-content: space-between;
+	gap: 12px;
+	width: fit-content;
+}
+
+.carouselDots {
+	display: flex;
+	justify-content: center;
+	gap: 8px;
+}
+
+.carouselDot {
+	display: flex;
+	width: 8px;
+	max-width: 8px;
+	height: 8px;
+	border-radius: 15px;
+	border: 1px solid #fff;
+	border: 1px solid color(display-p3 1 1 1);
+
+	transition: all 0.3s ease;
+}
+
+.carouselDots .active {
+	width: 16px;
+	max-width: 16px;
+	background-color: #fff;
+	background-color: color(display-p3 1 1 1);
+
+	transition: all 0.3s ease;
+}
+
+.setupText {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	align-items: stretch;
-	padding: 16px;
+	justify-content: start;
+	align-items: center;
+	gap: 16px;
 }
 
-.onboarding a {
-	width: 100%;
-}
-
-.screenContent {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		gap: 24px;
+.subText {
+	opacity: 0.6;
 }

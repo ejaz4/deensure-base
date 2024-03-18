@@ -12,6 +12,9 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
+			<head>
+				<link href="/manifest.json" rel="manifest" />
+			</head>
 			<body>{children}</body>
 		</html>
 	);
