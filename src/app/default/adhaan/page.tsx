@@ -6,9 +6,11 @@ import LogoDark from "@/assets/svg/logo-64-dark.svg";
 import LogoLight from "@/assets/svg/logo-64-light.svg";
 import { useEffect, useRef } from "react";
 import { Button } from "@/components/button";
+import { useRouter } from "next/navigation";
 
 const AdhaanTab = () => {
 	const transformYRef = useRef<HTMLDivElement>(null);
+	const router = useRouter();
 
 	// useEffect(() => {
 	// 	if (transformYRef.current) {
@@ -31,7 +33,13 @@ const AdhaanTab = () => {
 
 				<div className={styles.pageContent}>
 					<NextPrayer />
-					<Button onClick={() => {}}>Click here!</Button>
+					<Button
+						onClick={() => {
+							router.push("/onboarding/welcome");
+						}}
+					>
+						Click here!
+					</Button>
 				</div>
 			</div>
 		</div>

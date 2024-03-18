@@ -1,7 +1,7 @@
 {
 	"name": "Deensure",
 	"short_name": "Deensure",
-	"start_url": "/onboarding/welcome",
+	"start_url": "/default/adhaan",
 	"display": "standalone",
 	"background_color": "#fff",
 	"description": "Deensure is an all in one muslim companion.",
