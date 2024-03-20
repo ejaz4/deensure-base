@@ -68,3 +68,43 @@
 	background-image: url("/images/backdrops/noise.png");
 	background-repeat: repeat;
 }
+
+.nextPrayerDescriptor {
+	display: flex;
+	justify-content: flex-end;
+	flex-direction: column;
+	opacity: 0.5;
+	text-transform: uppercase;
+}
+
+.nextPrayerDescriptor span {
+	font-size: 12px;
+}
+
+.nextPrayerDummy {
+	visibility: hidden;
+}
+
+.nextPrayerLaunch {
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	animation: nextPrayerLaunchScale 0.5s ease-in-out forwards,
+		nextPrayerLaunchPos 0.5s cubic-bezier(0.62, -0.54, 0.03, 1) forwards;
+	z-index: 99;
+}
+
+@keyframes nextPrayerLaunchScale {
+	100% {
+		left: 0;
+		max-width: 100vw;
+		max-height: 100vh;
+		border-radius: 0;
+	}
+}
+
+@keyframes nextPrayerLaunchPos {
+	100% {
+		top: 0;
+	}
+}

@@ -9,21 +9,37 @@ import { Button } from "@/components/button";
 import { useRouter } from "next/navigation";
 
 const AdhaanTab = () => {
-	const transformYRef = useRef<HTMLDivElement>(null);
+	const logoRef = useRef<HTMLDivElement>(null);
+	const pageContentRef = useRef<HTMLDivElement>(null);
 	const router = useRouter();
 
-	// useEffect(() => {
-	// 	if (transformYRef.current) {
-	// 		transformYRef.current.classList.add(styles.logoEntry);
-	// 	}
-	// }, [transformYRef]);
+	useEffect(() => {
+		if (logoRef.current) {
+			logoRef.current.addEventListener("animationend", () => {
+				logoRef.current?.classList.remove(styles.logoEntry);
+
+				logoRef.current?.classList.add(styles.logo);
+			});
+		}
+	}, [logoRef]);
+
+	useEffect(() => {
+		if (pageContentRef.current) {
+			pageContentRef.current.addEventListener("animationend", () => {
+				pageContentRef.current?.classList.remove(
+					styles.pageContentAnimation
+				);
+			});
+		}
+	}, [pageContentRef]);
+
 	return (
 		<div>
 			<DevicePadding />
 			<div className={styles.screenContent}>
 				<div className={`${styles.header}`}>
 					<div></div>
-					<div className={`${styles.logoEntry}`}>
+					<div ref={logoRef} className={`${styles.logoEntry}`}>
 						<div className={styles.logoScale}>
 							<LogoDark />
 						</div>
@@ -31,7 +47,10 @@ const AdhaanTab = () => {
 					<div></div>
 				</div>
 
-				<div className={styles.pageContent}>
+				<div
+					ref={pageContentRef}
+					className={`${styles.pageContent} ${styles.pageContentAnimation}`}
+				>
 					<NextPrayer />
 					<Button
 						onClick={() => {
