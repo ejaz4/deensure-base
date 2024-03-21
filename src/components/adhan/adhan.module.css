@@ -6,6 +6,24 @@
 	height: 200px;
 	border-radius: 18px;
 	color: white;
+	transform: scale(1);
+	transition: transform 0.2s ease;
+}
+
+.nextPrayer:active {
+	transform: scale(0.95);
+}
+
+.nextPrayerArt {
+	filter: blur(10px);
+	transform: scale(1.1);
+	transition: filter 0.2s cubic-bezier(0, 0.49, 0.26, 0.98),
+		transform 0.2s ease;
+}
+
+.nextPrayer:active .nextPrayerArt {
+	filter: blur(30px);
+	transform: scale(1.2);
 }
 
 .nextPrayer * {
@@ -81,7 +99,7 @@
 	font-size: 12px;
 }
 
-.nextPrayerDummy {
+.nextAppDummy {
 	visibility: hidden;
 }
 
@@ -89,9 +107,19 @@
 	position: fixed;
 	width: 100vw;
 	height: 100vh;
-	animation: nextPrayerLaunchScale 0.5s ease-in-out forwards,
-		nextPrayerLaunchPos 0.5s cubic-bezier(0.62, -0.54, 0.03, 1) forwards;
+	animation: nextPrayerLaunchScale 1s 0.2s cubic-bezier(0, 0.81, 0.12, 1)
+			forwards,
+		/* nextPrayerLaunchPos 1s cubic-bezier(0, 0.22, 0.45, 0.99) forwards, */
+			nextPrayerLaunchPos 1s cubic-bezier(0.65, 0, 0.26, 0.98) forwards,
+		nextPrayerLaunchBR 1s 0.1s linear forwards;
 	z-index: 99;
+}
+
+@keyframes nextPrayerLaunchBR {
+	100% {
+		border-radius: 0px;
+		box-shadow: 0px 3px 11px 0px rgba(153, 153, 153, 0.59);
+	}
 }
 
 @keyframes nextPrayerLaunchScale {
@@ -99,11 +127,14 @@
 		left: 0;
 		max-width: 100vw;
 		max-height: 100vh;
-		border-radius: 0;
 	}
 }
 
 @keyframes nextPrayerLaunchPos {
+	50% {
+		top: 50%;
+		transform: translateY(-50%);
+	}
 	100% {
 		top: 0;
 	}

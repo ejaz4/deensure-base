@@ -1,5 +1,5 @@
 "use client";
-import { NextPrayer } from "@/components/adhan/nextprayer";
+import { NextPrayer, NextPrayerBackdrop } from "@/components/adhan/nextprayer";
 import styles from "../app.module.css";
 import { DevicePadding } from "@/components/device/padding";
 import LogoDark from "@/assets/svg/logo-64-dark.svg";
@@ -7,6 +7,7 @@ import LogoLight from "@/assets/svg/logo-64-light.svg";
 import { useEffect, useRef } from "react";
 import { Button } from "@/components/button";
 import { useRouter } from "next/navigation";
+import { AppWidget } from "@/components/adhan/widget";
 
 const AdhaanTab = () => {
 	const logoRef = useRef<HTMLDivElement>(null);
@@ -51,7 +52,21 @@ const AdhaanTab = () => {
 					ref={pageContentRef}
 					className={`${styles.pageContent} ${styles.pageContentAnimation}`}
 				>
-					<NextPrayer />
+					<AppWidget
+						content={<NextPrayer />}
+						backdrop={<NextPrayerBackdrop />}
+						app={<></>}
+					/>
+
+					<AppWidget
+						content={
+							<div style={{ color: "black" }}>
+								Another widget!
+							</div>
+						}
+						backdrop={<></>}
+						app={<></>}
+					/>
 					<Button
 						onClick={() => {
 							router.push("/onboarding/welcome");
