@@ -44,7 +44,7 @@ export const NextPrayer = () => {
 	}, []);
 
 	return (
-		<div className={styles.nextPrayerContent}>
+		<>
 			<div>
 				<div className={styles.featureIndicator}>
 					<Hourglass size={16} color={"white"} />
@@ -59,19 +59,19 @@ export const NextPrayer = () => {
 					<span>Prayer Times</span>
 				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 
 export const NextPrayerBackdrop = () => {
 	return (
-		<div className={styles.nextPrayerBackdrop}>
+		<>
 			<img
 				className={styles.nextPrayerArt}
 				src="/images/backdrops/prayer-mid.png"
 				alt=""
 			/>
 			<div className={styles.nextPrayerNoise} />
-		</div>
+		</>
 	);
 };
