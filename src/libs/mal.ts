@@ -1,11 +1,13 @@
 // Android MAL Library
 
 export const GetLocation = async () => {
-	Android.test();
-	return {
-		latitude: 0,
-		longitude: 0,
-	};
+	const location: {
+		longitude: number;
+		latitude: number;
+	} = JSON.parse(Android.GetLocation());
+
+	console.log(location);
+	return location;
 };
 
 export const SaveStorageFile = async (fileName: string, data: string) => {
@@ -27,18 +29,7 @@ export enum HapticType {
 export const Haptic = (
 	type: HapticType.Light | HapticType.Medium | HapticType.Heavy
 ) => {
-	if (!window.navigator.vibrate) return;
-	switch (type) {
-		case HapticType.Light:
-			window.navigator.vibrate(10);
-			break;
-		case HapticType.Medium:
-			window.navigator.vibrate(50);
-			break;
-		case HapticType.Heavy:
-			window.navigator.vibrate(100);
-			break;
-	}
+	Android.Haptic(type);
 };
 
 export const Dialogue = (message: string) => {
