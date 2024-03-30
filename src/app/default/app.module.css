@@ -50,7 +50,7 @@
 }
 
 .pageContentAnimation {
-	will-change: transform, opacity, gap;
+	will-change: transform, opacity;
 	animation: pageContent 0.5s 1.5s cubic-bezier(0, 0.54, 0.12, 0.99) forwards;
 	opacity: 0;
 }
@@ -59,12 +59,12 @@
 	0% {
 		opacity: 0;
 		transform: translateY(200px);
-		gap: 64px;
+		/* gap: 64px; */
 	}
 	100% {
 		opacity: 1;
 		transform: translateY(0);
-		gap: 16px;
+		/* gap: 16px; */
 	}
 }
 
