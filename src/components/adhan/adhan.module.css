@@ -7,6 +7,7 @@
 	border-radius: 18px;
 	color: white;
 	transform: scale(1);
+	will-change: transform;
 	transition: transform 0.2s ease;
 }
 
@@ -127,6 +128,7 @@
 	position: fixed;
 	width: 100vw;
 	height: 100vh;
+	will-change: transform, opacity, border-radius, box-shadow;
 	animation: nextPrayerLaunchScale 1s 0.2s cubic-bezier(0, 0.81, 0.12, 1)
 			forwards,
 		/* nextPrayerLaunchPos 1s cubic-bezier(0, 0.22, 0.45, 0.99) forwards, */
@@ -146,7 +148,6 @@
 @keyframes nextPrayerLaunchBR {
 	100% {
 		border-radius: 0px;
-		box-shadow: 0px 3px 11px 0px rgba(153, 153, 153, 0.59);
 	}
 }
 
