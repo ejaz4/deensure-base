@@ -58,3 +58,7 @@ export const Haptic = (
 export const Dialogue = (message: string) => {
 	alert(message);
 };
+
+export const StatusBarHeight = () => {
+	return 0;
+};
