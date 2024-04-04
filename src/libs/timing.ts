@@ -20,7 +20,7 @@ export const GetNextPrayer = async () => {
 
 	const coordinates = new Coordinates(coords.latitude, coords.longitude);
 
-	const params = CalculationMethod.MuslimWorldLeague();
+	const params = CalculationMethod.MoonsightingCommittee();
 	params.madhab = madhabInput as CalculationParameters["madhab"];
 
 	const date = new Date(Date.now());

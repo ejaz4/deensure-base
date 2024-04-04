@@ -7,6 +7,7 @@ import "moment/min/locales";
 import { GetNextPrayer } from "@/libs/timing";
 import { Hourglass } from "lucide-react";
 import { Haptic, HapticType } from "@/libs/mal";
+import { DevicePadding, DevicePaddingType } from "@/components/device/padding";
 
 export const AppWidget = ({
 	content,
@@ -82,6 +83,7 @@ export const AppWidget = ({
 				<div className={styles.nextPrayerBackdrop}>{backdrop}</div>
 
 				<div ref={appContent} className={styles.appContainer}>
+					<DevicePadding type={DevicePaddingType.StatusBar} />
 					{app && app}
 				</div>
 			</div>

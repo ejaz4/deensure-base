@@ -1,3 +1,5 @@
+import styles from "./device.module.css";
+
 export enum DevicePaddingType {
 	StatusBar,
 	NavigationBar,
@@ -8,5 +10,5 @@ export const DevicePadding = ({
 }: {
 	type?: DevicePaddingType;
 }) => {
-	return <div></div>;
+	return <div className={styles.statusBarPadding}></div>;
 };

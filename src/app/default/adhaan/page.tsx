@@ -61,6 +61,33 @@ const AdhaanTab = () => {
 							</>
 						}
 					/>
+					<AppWidget
+						content={<NextPrayer />}
+						backdrop={<NextPrayerBackdrop />}
+						app={
+							<>
+								<p>hi</p>
+							</>
+						}
+					/>
+					<AppWidget
+						content={<NextPrayer />}
+						backdrop={<NextPrayerBackdrop />}
+						app={
+							<>
+								<p>hi</p>
+							</>
+						}
+					/>
+					<AppWidget
+						content={<NextPrayer />}
+						backdrop={<NextPrayerBackdrop />}
+						app={
+							<>
+								<p>hi</p>
+							</>
+						}
+					/>
 
 					<AppWidget
 						content={

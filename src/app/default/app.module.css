@@ -1,6 +1,6 @@
 .screenContent {
 	display: flex;
-	height: 100vh;
+	/* height: 100vh; */
 	box-sizing: border-box;
 	width: 100%;
 
@@ -27,7 +27,7 @@
 	top: 50%;
 	transform: translateX(-50%) translateY(-50%);
 	will-change: transform;
-	animation: logoEntry 0.75s 1s cubic-bezier(0.46, 0, 0.52, 1) forwards;
+	animation: logoEntry 0.75s 0.5s cubic-bezier(0.46, 0, 0.52, 1) forwards;
 }
 
 .logo {
@@ -37,7 +37,7 @@
 .logoScale {
 	transform: scale(2);
 	will-change: transform;
-	animation: logoScale 0.75s 1s cubic-bezier(0, 0.35, 0.12, 0.99) forwards;
+	animation: logoScale 0.75s 0.5s cubic-bezier(0, 0.35, 0.12, 0.99) forwards;
 }
 
 .pageContent {
@@ -51,7 +51,7 @@
 
 .pageContentAnimation {
 	will-change: transform, opacity;
-	animation: pageContent 0.5s 1.5s cubic-bezier(0, 0.54, 0.12, 0.99) forwards;
+	animation: pageContent 0.5s 1s cubic-bezier(0, 0.54, 0.12, 0.99) forwards;
 	opacity: 0;
 }
 
@@ -83,7 +83,8 @@
 		transform: translateX(-50%) translateY(-50%);
 	}
 	100% {
-		top: 0%;
-		transform: translateX(-50%) translateY(32px);
+		top: 0px;
+		transform: translateX(-50%)
+			translateY(calc(var(--status-bar-height) + 32px));
 	}
 }

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { useEffect, useState } from "react";
+import { StatusBarHeight } from "@/libs/mal";
 export const metadata: Metadata = {
 	title: "Deensure Base",
 	description: "The Deensure base user-interface.",
