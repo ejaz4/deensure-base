@@ -35,3 +35,10 @@ export const Haptic = (
 export const Dialogue = (message: string) => {
 	alert(message);
 };
+
+export const StatusBarHeight = () => {
+	const height = Android.StatusBarHeight();
+
+	return height;
+	// return 0;
+};

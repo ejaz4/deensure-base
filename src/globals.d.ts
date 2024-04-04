@@ -6,6 +6,7 @@ declare global {
 		test: () => void;
 		GetLocation: () => string;
 		Haptic: (type: number) => void;
+		StatusBarHeight: () => number;
 	}
 	declare var Android: AndroidType;
 }
