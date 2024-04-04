@@ -1,0 +1,4 @@
+.statusBarPadding {
+	width: 100%;
+	height: var(--status-bar-height)
+}
