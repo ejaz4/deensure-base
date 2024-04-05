@@ -20,6 +20,7 @@ export const AppWidget = ({
 }) => {
 	const appDummy = useRef<HTMLDivElement>(null);
 	const appElem = useRef<HTMLDivElement>(null);
+	const [appOpen, setAppOpen] = useState(false);
 
 	const widgetContent = useRef<HTMLDivElement>(null);
 
@@ -49,8 +50,33 @@ export const AppWidget = ({
 					appElem.current.classList.add(styles.nextPrayerLaunch);
 				}
 			});
+
+			appElem.current.addEventListener("animationend", () => {
+				if (appElem.current == null) return;
+				if (appDummy.current == null) return;
+
+				if (
+					appElem.current.classList.contains(styles.nextPrayerLaunch)
+				) {
+					setAppOpen(true);
+				} else {
+					setAppOpen(false);
+				}
+				console.log("Transition end");
+			});
 		}
 	}, [appElem]);
+
+	useEffect(() => {
+		if (appOpen) {
+			if (appElem.current == null) return;
+			appElem.current.classList.remove(styles.nextPrayerLaunch);
+			appElem.current.classList.add(styles.nextPrayerOpen);
+		} else {
+			if (appElem.current == null) return;
+			appElem.current.classList.remove(styles.nextPrayerOpen);
+		}
+	}, [appOpen]);
 
 	useEffect(() => {
 		if (widgetContent.current) {
