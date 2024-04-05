@@ -16,6 +16,7 @@
 	--font-family: "Inter", sans-serif;
 	--dark-color: #343a40;
 	--status-bar-height: 0px;
+	--height-without-status-bar: calc(100vh - var(--status-bar-height));
 }
 
 @font-face {

@@ -8,6 +8,7 @@ import { useEffect, useRef } from "react";
 import { Button } from "@/components/button";
 import { useRouter } from "next/navigation";
 import { AppWidget } from "@/components/adhan/widget";
+import { AdhanTimingPage } from "@/components/adhan/app";
 
 const AdhaanTab = () => {
 	const logoRef = useRef<HTMLDivElement>(null);
@@ -55,40 +56,8 @@ const AdhaanTab = () => {
 					<AppWidget
 						content={<NextPrayer />}
 						backdrop={<NextPrayerBackdrop />}
-						app={
-							<>
-								<p>hi</p>
-							</>
-						}
+						app={<AdhanTimingPage />}
 					/>
-					<AppWidget
-						content={<NextPrayer />}
-						backdrop={<NextPrayerBackdrop />}
-						app={
-							<>
-								<p>hi</p>
-							</>
-						}
-					/>
-					<AppWidget
-						content={<NextPrayer />}
-						backdrop={<NextPrayerBackdrop />}
-						app={
-							<>
-								<p>hi</p>
-							</>
-						}
-					/>
-					<AppWidget
-						content={<NextPrayer />}
-						backdrop={<NextPrayerBackdrop />}
-						app={
-							<>
-								<p>hi</p>
-							</>
-						}
-					/>
-
 					<AppWidget
 						content={
 							<div style={{ color: "black" }}>

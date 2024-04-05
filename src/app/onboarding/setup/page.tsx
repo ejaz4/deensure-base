@@ -5,12 +5,11 @@ import Logo from "@/assets/svg/logo-64-dark.svg";
 import { Button } from "@/components/button";
 import styles from "../onboarding.module.css";
 import { AutoObtainCity } from "@/libs/location";
-import { Dialogue, LoadStorageFile } from "@/libs/mal";
 import { useRouter } from "next/navigation";
 import { DevicePadding, DevicePaddingType } from "@/components/device/padding";
 import { useRef } from "react";
 import backgrounds from "../backgrounds.module.css";
-import { ChevronLeft, LocateIcon, LockIcon, Navigation } from "lucide-react";
+import { ChevronLeft, LockIcon, Navigation } from "lucide-react";
 
 const SetupPage = () => {
 	const screenContent = useRef<HTMLDivElement>(null);
