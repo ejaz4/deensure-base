@@ -98,7 +98,9 @@ export const AppWidget = ({
 				width: "100%",
 			}}
 			onTouchStart={(e) => {
-				Haptic(HapticType.Light);
+				if (!appOpen) {
+					Haptic(HapticType.Light);
+				}
 			}}
 		>
 			<div ref={appElem} className={styles.nextPrayer}>

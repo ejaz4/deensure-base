@@ -1,4 +1,8 @@
+"use client";
+import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import styles from "../../adhan.module.css";
+import { LoadStorageFile } from "@/libs/mal";
+import { Navigation } from "lucide-react";
 
 export const DateSelector = ({
 	currentDate,
@@ -7,35 +11,55 @@ export const DateSelector = ({
 	currentDate: Date;
 	setCurrentDate: (date: Date) => void;
 }) => {
+	const locationItem = useMemo(
+		() => (
+			<Suspense>
+				<LocationItem />
+			</Suspense>
+		),
+		[]
+	);
 	return (
-		<div
-			onScroll={(e) => {
-				e;
-			}}
-			className={styles.dateSelector}
-		>
-			{[...Array(Math.round(scrollX) + Math.round(outerWidth / 4))].map(
-				(_, i) => (
-					<DateItem
-						key={i}
-						date={new Date(Date.now() + i * 86400000)}
-						setCurrentDate={setCurrentDate}
-						selected={
-							currentDate.getMonth() ===
-								new Date(
-									Date.now() + i * 86400000
-								).getMonth() &&
-							currentDate.getFullYear() ===
-								new Date(
-									Date.now() + i * 86400000
-								).getFullYear() &&
-							currentDate.getDate() ===
-								new Date(Date.now() + i * 86400000).getDate()
-						}
-					/>
-				)
-			)}
+		<div className={styles.dateSelector}>
+			{locationItem}
+			{[...Array(365)].map((_, i) => (
+				<DateItem
+					key={i}
+					date={new Date(Date.now() + i * 86400000)}
+					setCurrentDate={setCurrentDate}
+					selected={
+						currentDate.getMonth() ===
+							new Date(Date.now() + i * 86400000).getMonth() &&
+						currentDate.getFullYear() ===
+							new Date(Date.now() + i * 86400000).getFullYear() &&
+						currentDate.getDate() ===
+							new Date(Date.now() + i * 86400000).getDate()
+					}
+				/>
+			))}
 		</div>
+	);
+};
+
+const LocationItem = async () => {
+	const [location, setLocation] = useState<string>("");
+
+	useEffect(() => {
+		(async () => {
+			const coords = JSON.parse(
+				(await LoadStorageFile("coords")) as string
+			);
+
+			if (coords == null) return null;
+
+			setLocation(coords.city);
+		})();
+	}, []);
+
+	return (
+		<button className={styles.dateSelectorItem}>
+			<Navigation size={16} /> {location}
+		</button>
 	);
 };
 

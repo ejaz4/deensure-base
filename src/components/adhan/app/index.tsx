@@ -8,18 +8,20 @@ import styles from "./adhan.module.css";
 export const AdhanTimingPage = () => {
 	const [currentDate, setCurrentDate] = useState<Date>(new Date(Date.now()));
 
-	const dateNow = currentDate;
+	const [dateNow, setDateNow] = useState<Date>(new Date(Date.now()));
 
 	useEffect(() => {
 		(async () => {
 			console.log(await GetPrayersForDate(new Date(Date.now())));
 		})();
+
+		setDateNow(new Date(Date.now()));
 	}, []);
 
 	return (
 		<div>
 			<div className={styles.dateHeader}>
-				{currentDate != dateNow && (
+				{currentDate.toDateString() != dateNow.toDateString() && (
 					<h1>
 						{currentDate.toLocaleDateString(navigator.language, {
 							weekday: "long",
@@ -29,13 +31,19 @@ export const AdhanTimingPage = () => {
 						})}
 					</h1>
 				)}
-				{currentDate == dateNow && <CurrentPrayer />}
+				{currentDate.toDateString() == dateNow.toDateString() && (
+					<CurrentPrayer />
+				)}
 			</div>
 			<div>
 				<DateSelector
 					currentDate={currentDate}
 					setCurrentDate={setCurrentDate}
 				/>
+			</div>
+			<div>
+				<p>{currentDate.toDateString()}</p>
+				<p>{dateNow.toDateString()}</p>
 			</div>
 		</div>
 	);
