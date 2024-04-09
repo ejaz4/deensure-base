@@ -1,13 +1,25 @@
-// Android MAL Library
+// This file should be changed to represent the platform you are using.
 
 export const GetLocation = async () => {
-	const location: {
-		longitude: number;
-		latitude: number;
-	} = JSON.parse(Android.GetLocation());
+	if (navigator.geolocation) {
+		return await new Promise<{
+			longitude: number;
+			latitude: number;
+		}>((resolve) => {
+			navigator.geolocation.getCurrentPosition((s) => {
+				let position = {
+					longitude: s.coords.longitude,
+					latitude: s.coords.latitude,
+				};
+				let timestamp = s.timestamp;
 
-	console.log(location);
-	return location;
+				resolve(position);
+			});
+		});
+	} else {
+		console.error("Geolocation is not supported by this browser.");
+		return { longitude: 0, latitude: 0 };
+	}
 };
 
 export const SaveStorageFile = async (fileName: string, data: string) => {
@@ -29,7 +41,18 @@ export enum HapticType {
 export const Haptic = (
 	type: HapticType.Light | HapticType.Medium | HapticType.Heavy
 ) => {
-	Android.Haptic(type);
+	if (!window.navigator.vibrate) return;
+	switch (type) {
+		case HapticType.Light:
+			window.navigator.vibrate(10);
+			break;
+		case HapticType.Medium:
+			window.navigator.vibrate(50);
+			break;
+		case HapticType.Heavy:
+			window.navigator.vibrate(100);
+			break;
+	}
 };
 
 export const Dialogue = (message: string) => {
@@ -37,8 +60,5 @@ export const Dialogue = (message: string) => {
 };
 
 export const StatusBarHeight = () => {
-	const height = Android.StatusBarHeight();
-
-	return height;
-	// return 0;
+	return 0;
 };
