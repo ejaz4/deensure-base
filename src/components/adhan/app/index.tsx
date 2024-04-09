@@ -4,9 +4,11 @@ import { CurrentPrayer } from "./components/currentPrayer";
 import { useEffect, useState } from "react";
 import { DateSelector } from "./components/dateSelector";
 import styles from "./adhan.module.css";
+import { AdhanTimes } from "./components/times";
 
 export const AdhanTimingPage = () => {
 	const [currentDate, setCurrentDate] = useState<Date>(new Date(Date.now()));
+	const [currentDateLocalised, setCurrentDateLocalised] = useState<string>();
 
 	const [dateNow, setDateNow] = useState<Date>(new Date(Date.now()));
 
@@ -18,18 +20,22 @@ export const AdhanTimingPage = () => {
 		setDateNow(new Date(Date.now()));
 	}, []);
 
+	useEffect(() => {
+		setCurrentDateLocalised(
+			currentDate.toLocaleDateString(navigator.language, {
+				weekday: "long",
+				year: "numeric",
+				month: "long",
+				day: "numeric",
+			})
+		);
+	}, [currentDate]);
+
 	return (
 		<div>
 			<div className={styles.dateHeader}>
 				{currentDate.toDateString() != dateNow.toDateString() && (
-					<h1>
-						{currentDate.toLocaleDateString(navigator.language, {
-							weekday: "long",
-							year: "numeric",
-							month: "long",
-							day: "numeric",
-						})}
-					</h1>
+					<h1>{currentDateLocalised}</h1>
 				)}
 				{currentDate.toDateString() == dateNow.toDateString() && (
 					<CurrentPrayer />
@@ -42,8 +48,7 @@ export const AdhanTimingPage = () => {
 				/>
 			</div>
 			<div>
-				<p>{currentDate.toDateString()}</p>
-				<p>{dateNow.toDateString()}</p>
+				<AdhanTimes date={currentDate} />
 			</div>
 		</div>
 	);

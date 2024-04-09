@@ -13,7 +13,13 @@ export const DateSelector = ({
 }) => {
 	const locationItem = useMemo(
 		() => (
-			<Suspense>
+			<Suspense
+				fallback={
+					<button className={styles.dateSelectorItem}>
+						<Navigation size={16} />
+					</button>
+				}
+			>
 				<LocationItem />
 			</Suspense>
 		),
@@ -72,27 +78,37 @@ const DateItem = ({
 	setCurrentDate: (date: Date) => void;
 	selected: boolean;
 }) => {
-	var localisedDate = date.toLocaleDateString(navigator.language, {
-		weekday: "long",
-		month: "long",
-		day: "numeric",
-	});
+	const [localisedDate, setLocalisedDate] = useState<string>();
 
-	if (date.getFullYear() == new Date(Date.now()).getFullYear()) {
-		if (date.getMonth() === new Date(Date.now()).getMonth()) {
-			if (date.getDate() === new Date(Date.now()).getDate()) {
-				localisedDate = "Today";
-			}
+	useEffect(() => {
+		setLocalisedDate(
+			date.toLocaleDateString(navigator.language, {
+				weekday: "long",
+				month: "long",
+				day: "numeric",
+			})
+		);
 
-			if (date.getDate() === new Date(Date.now() + 86400000).getDate()) {
-				localisedDate = "Tomorrow";
-			}
+		if (date.getFullYear() == new Date(Date.now()).getFullYear()) {
+			if (date.getMonth() === new Date(Date.now()).getMonth()) {
+				if (date.getDate() === new Date(Date.now()).getDate()) {
+					setLocalisedDate("Today");
+				}
 
-			if (date.getDate() === new Date(Date.now() - 86400000).getDate()) {
-				localisedDate = "Yesterday";
+				if (
+					date.getDate() === new Date(Date.now() + 86400000).getDate()
+				) {
+					setLocalisedDate("Tomorrow");
+				}
+
+				if (
+					date.getDate() === new Date(Date.now() - 86400000).getDate()
+				) {
+					setLocalisedDate("Yesterday");
+				}
 			}
 		}
-	}
+	}, [date]);
 
 	return (
 		<button

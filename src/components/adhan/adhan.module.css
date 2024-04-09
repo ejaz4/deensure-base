@@ -44,7 +44,7 @@
 }
 
 .nextPrayer:active .nextPrayerArt {
-	filter: blur(30px);
+	/* filter: blur(30px); */
 	transform: scale(1.2);
 }
 
@@ -70,6 +70,7 @@
 	z-index: 1;
 	opacity: 1;
 	transition: opacity 0.4s ease;
+	user-select: none;
 }
 
 .nextPrayerSub {
