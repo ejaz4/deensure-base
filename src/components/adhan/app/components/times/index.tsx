@@ -89,7 +89,7 @@ export const AdhanTimesCarousel = ({
 	);
 };
 
-const AdhanTimes = ({
+export const AdhanTimes = ({
 	date,
 	makeRef,
 }: {

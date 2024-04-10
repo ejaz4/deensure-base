@@ -4,7 +4,7 @@ import { CurrentPrayer } from "./components/currentPrayer";
 import { useEffect, useState } from "react";
 import { DateSelector } from "./components/dateSelector";
 import styles from "./adhan.module.css";
-import { AdhanTimesCarousel } from "./components/times";
+import { AdhanTimes, AdhanTimesCarousel } from "./components/times";
 
 export const AdhanTimingPage = () => {
 	const [currentDate, setCurrentDate] = useState<Date>(new Date(Date.now()));
@@ -48,10 +48,7 @@ export const AdhanTimingPage = () => {
 				/>
 			</div>
 			<div>
-				<AdhanTimesCarousel
-					date={currentDate}
-					setDate={setCurrentDate}
-				/>
+				<AdhanTimes date={currentDate} />
 			</div>
 		</div>
 	);

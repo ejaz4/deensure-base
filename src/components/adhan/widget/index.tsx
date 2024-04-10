@@ -101,13 +101,21 @@ export const AppWidget = ({
 				ref={appElem}
 				onClick={() => openApp()}
 				className={styles.nextPrayer}
-				onAnimationEnd={() => {
+				onAnimationEnd={(e) => {
 					if (appElem.current == null) return;
 					if (appDummy.current == null) return;
+
+					console.log(e.currentTarget.className);
 
 					if (
 						appElem.current.classList.contains(
 							styles.nextPrayerLaunch
+						)
+					) {
+						setAppOpen(true);
+					} else if (
+						appElem.current.classList.contains(
+							styles.nextPrayerOpen
 						)
 					) {
 						setAppOpen(true);
