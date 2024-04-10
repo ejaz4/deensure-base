@@ -79,6 +79,7 @@ const DateItem = ({
 	selected: boolean;
 }) => {
 	const [localisedDate, setLocalisedDate] = useState<string>();
+	const elemRef = useRef<HTMLButtonElement>(null);
 
 	useEffect(() => {
 		setLocalisedDate(
@@ -110,8 +111,23 @@ const DateItem = ({
 		}
 	}, [date]);
 
+	useEffect(() => {
+		setTimeout(() => {
+			if (selected) {
+				if (elemRef.current) {
+					elemRef.current.scrollIntoView({
+						behavior: "smooth",
+						block: "center",
+						// inline: "center",
+					});
+				}
+			}
+		}, 100);
+	}, [selected]);
+
 	return (
 		<button
+			ref={elemRef}
 			onClick={() => setCurrentDate(date)}
 			className={`${styles.dateSelectorItem} ${
 				selected ? styles.dateSelectorItemActive : ""
