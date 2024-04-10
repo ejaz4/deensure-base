@@ -2,10 +2,100 @@
 import { GetPrayersForDate } from "@/libs/timing";
 import { PrayerTimes } from "adhan";
 import styles from "../../adhan.module.css";
-import { useEffect, useState } from "react";
-import moment from "moment";
+import { RefObject, useEffect, useRef, useState } from "react";
+import moment, { max } from "moment";
+import _ from "lodash";
 
-export const AdhanTimes = ({ date }: { date: Date }) => {
+export const AdhanTimesCarousel = ({
+	date,
+	setDate,
+}: {
+	date: Date;
+	setDate: (date: Date) => void;
+}) => {
+	const [tomorrowDate, setTomorrowDate] = useState(
+		new Date(date.getTime() + 86400000)
+	);
+	const [yesterdayDate, setYesterdayDate] = useState(
+		new Date(date.getTime() - 86400000)
+	);
+
+	useEffect(() => {
+		setTimeout(() => {
+			if (carousel.current == null) return;
+			if (currentElem.current == null) return;
+			currentElem.current.scrollIntoView({
+				behavior: "instant",
+				block: "center",
+				inline: "center",
+			});
+		}, 50);
+	}, [date]);
+
+	useEffect(() => {
+		setTimeout(() => {
+			setTomorrowDate(new Date(date.getTime() + 86400000));
+			setYesterdayDate(new Date(date.getTime() - 86400000));
+		}, 100);
+	}, [date]);
+
+	const carousel = useRef<HTMLDivElement>(null);
+	const currentElem = useRef<HTMLDivElement>(null);
+
+	return (
+		<div
+			ref={carousel}
+			onScroll={_.debounce(() => {
+				if (carousel.current == null) return;
+				if (currentElem.current == null) return;
+				const carouselRect = carousel.current.getBoundingClientRect();
+
+				// Make a variable to get which page the carousel is on
+				const page = Math.round(
+					carousel.current.scrollLeft / carouselRect.width
+				);
+
+				// Make a variable to get the maximum amount of pages
+				const maxPage =
+					Math.round(
+						carousel.current.scrollWidth / carouselRect.width
+					) - 1;
+
+				if (maxPage == 1) {
+					if (page == 1) {
+						setDate(tomorrowDate);
+					}
+				}
+
+				if (maxPage == 2) {
+					if (page == 0) {
+						setDate(yesterdayDate);
+					}
+					if (page == 2) {
+						setDate(tomorrowDate);
+					}
+				}
+
+				console.log(page, maxPage);
+			}, 20)}
+			className={styles.prayerTimesCarousel}
+		>
+			{date.toDateString() != new Date(Date.now()).toDateString() && (
+				<AdhanTimes date={yesterdayDate} />
+			)}
+			<AdhanTimes makeRef={currentElem} date={date} />
+			<AdhanTimes date={tomorrowDate} />
+		</div>
+	);
+};
+
+const AdhanTimes = ({
+	date,
+	makeRef,
+}: {
+	date: Date;
+	makeRef?: RefObject<HTMLDivElement>;
+}) => {
 	const [adhanTimes, setAdhanTimes] = useState<PrayerTimes | null>(null);
 
 	useEffect(() => {
@@ -16,7 +106,7 @@ export const AdhanTimes = ({ date }: { date: Date }) => {
 	}, [date]);
 
 	return (
-		<div className={styles.prayerTimes}>
+		<div ref={makeRef} className={styles.prayerTimes}>
 			{adhanTimes && (
 				<>
 					<AdhanTimeElement

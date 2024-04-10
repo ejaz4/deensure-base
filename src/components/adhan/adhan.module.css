@@ -191,6 +191,8 @@
 .appGesture {
 	height: 100vh;
 	scroll-snap-align: end;
+	max-height: 100vh;
+	overflow-y: auto;
 }
 
 .appGestureIcon {
