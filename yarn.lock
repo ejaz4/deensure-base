@@ -1364,6 +1364,11 @@
   dependencies:
     "@turf/helpers" "^6.5.0"
 
+"@types/js-search@^1.4.4":
+  version "1.4.4"
+  resolved "https://registry.yarnpkg.com/@types/js-search/-/js-search-1.4.4.tgz#4f56b1f6552dd0ed906e6ece440ea7f8f4915e84"
+  integrity sha512-NYIBuSRTi2h6nLne0Ygx78BZaiT/q0lLU7YSkjOrDJWpSx6BioIZA/i2GZ+WmMUzEQs2VNIWcXRRAqisrG3ZNA==
+
 "@types/json5@^0.0.29":
   version "0.0.29"
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
@@ -1785,6 +1790,11 @@ chalk@^4.0.0:
   dependencies:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
+
+cities.json@^1.1.35:
+  version "1.1.35"
+  resolved "https://registry.yarnpkg.com/cities.json/-/cities.json-1.1.35.tgz#7f5aaa1006f722176148fb135cb96e99450d8c70"
+  integrity sha512-HPW46fA1fPEJksGidY8i9YkJrrVwBmSAGCldf1IvvXFsoqBikszvlza6cHpTZ+gI0YZMK/VHiIrrxMxtR3yvhQ==
 
 client-only@0.0.1:
   version "0.0.1"
@@ -2942,6 +2952,11 @@ jackspeak@^2.3.5:
   optionalDependencies:
     "@pkgjs/parseargs" "^0.11.0"
 
+js-search@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/js-search/-/js-search-2.0.1.tgz#a9c0fe92a3945aa839ba6bae5910d26eac850984"
+  integrity sha512-8k12LiC3fPt7gLRJTc1azE1BFvlxIw+BG3J9YzjuYf4wSE65uqYSYP4VhweApcTfV51Fzq/ogBulQew5937A9A==
+
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
@@ -3474,6 +3489,11 @@ react-is@^16.13.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
+
+react-loading-skeleton@^3.4.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/react-loading-skeleton/-/react-loading-skeleton-3.4.0.tgz#c71a3a17259d08e4064974aa0b07f150a09dfd57"
+  integrity sha512-1oJEBc9+wn7BbkQQk7YodlYEIjgeR+GrRjD+QXkVjwZN7LGIcAFHrx4NhT7UHGBxNY1+zax3c+Fo6XQM4R7CgA==
 
 react@^18:
   version "18.2.0"

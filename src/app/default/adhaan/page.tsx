@@ -58,6 +58,20 @@ const AdhaanTab = () => {
 						backdrop={<NextPrayerBackdrop />}
 						app={<AdhanTimingPage />}
 					/>
+					<div
+						style={{
+							width: "50%",
+							display: "flex",
+							justifyContent: "flex-start",
+							alignSelf: "flex-start",
+						}}
+					>
+						<AppWidget
+							content={<NextPrayer />}
+							backdrop={<NextPrayerBackdrop />}
+							app={<AdhanTimingPage />}
+						/>
+					</div>
 					<AppWidget
 						content={
 							<div style={{ color: "black" }}>

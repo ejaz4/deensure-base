@@ -2,7 +2,9 @@
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import styles from "../../adhan.module.css";
 import { LoadStorageFile } from "@/libs/mal";
-import { Navigation } from "lucide-react";
+import { Loader, MapPin, Navigation } from "lucide-react";
+import { ManualInput } from "@/components/location/search/manual";
+import { SearchForLocation } from "@/components/location/search/skeleton";
 
 export const DateSelector = ({
 	currentDate,
@@ -16,7 +18,7 @@ export const DateSelector = ({
 			<Suspense
 				fallback={
 					<button className={styles.dateSelectorItem}>
-						<Navigation size={16} />
+						<Loader size={16} />
 					</button>
 				}
 			>
@@ -49,6 +51,8 @@ export const DateSelector = ({
 
 const LocationItem = async () => {
 	const [location, setLocation] = useState<string>("");
+	const [automated, setAutomated] = useState<boolean>(false);
+	const [open, setOpen] = useState<boolean>(false);
 
 	useEffect(() => {
 		(async () => {
@@ -57,15 +61,29 @@ const LocationItem = async () => {
 			);
 
 			if (coords == null) return null;
-
 			setLocation(coords.city);
+
+			if (coords.automated) {
+				setAutomated(true);
+			}
 		})();
 	}, []);
 
 	return (
-		<button className={styles.dateSelectorItem}>
-			<Navigation size={16} /> {location}
-		</button>
+		<>
+			<button
+				onClick={(e) => {
+					setOpen(true);
+				}}
+				className={styles.dateSelectorItem}
+			>
+				{automated && <Navigation size={16} />}
+				{!automated && <MapPin size={16} />}
+				{location}
+			</button>
+
+			{open && <SearchForLocation setOpen={setOpen} />}
+		</>
 	);
 };
 

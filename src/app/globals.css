@@ -17,6 +17,10 @@
 	--dark-color: #343a40;
 	--status-bar-height: 0px;
 	--height-without-status-bar: calc(100vh - var(--status-bar-height));
+
+	/* --body-bg: #000;
+	--text-color: #fff;
+	--text-color-faint: rgba(255, 255, 255, 0.1); */
 }
 
 @font-face {
@@ -42,7 +46,8 @@ h4,
 h5,
 h6,
 p,
-span {
+span,
+button {
 	color: var(--text-color);
 	margin: 0;
 }

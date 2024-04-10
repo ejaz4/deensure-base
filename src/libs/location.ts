@@ -27,7 +27,25 @@ export const AutoObtainCity = async () => {
 			latitude: position.latitude,
 			longitude: position.longitude,
 			city: title(city.properties.NAME),
+			automated: true,
 		})
 	);
 	return true;
+};
+
+export const SetCityManually = async (
+	city: string,
+	latitude: number,
+	longitude: number
+) => {
+	console.log("Setting city manually", city, latitude, longitude);
+	await SaveStorageFile(
+		"coords",
+		JSON.stringify({
+			latitude,
+			longitude,
+			city,
+			automated: false,
+		})
+	);
 };
