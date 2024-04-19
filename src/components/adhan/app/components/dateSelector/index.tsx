@@ -3,7 +3,6 @@ import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import styles from "../../adhan.module.css";
 import { LoadStorageFile } from "@/libs/mal";
 import { Loader, MapPin, Navigation } from "lucide-react";
-import { ManualInput } from "@/components/location/search/manual";
 import { SearchForLocation } from "@/components/location/search/skeleton";
 
 export const DateSelector = ({

@@ -14,11 +14,29 @@ export const ManualInput = async ({
 			<Suspense>
 				<ManualInputForm />
 			</Suspense>
-			<div
-				onClick={() => setOpen(false)}
-				className={styles.manualSearchBackdrop}
-			></div>
+			<Backdrop setOpen={setOpen} />
 		</div>
+	);
+};
+
+export const Backdrop = ({
+	setOpen,
+}: {
+	setOpen: (value: boolean) => void;
+}) => {
+	return (
+		<div
+			onClick={(e) => {
+				e.currentTarget.classList.add(styles.backdropExit);
+			}}
+			onAnimationEnd={(e) => {
+				if (e.animationName == styles.backdropFade)
+					e.currentTarget.classList.remove(styles.backdropEntry);
+
+				if (e.animationName == styles.backdropFadeOut) setOpen(false);
+			}}
+			className={`${styles.manualSearchBackdrop}`}
+		></div>
 	);
 };
 

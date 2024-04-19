@@ -3,6 +3,7 @@ import styles from "./manual.module.css";
 import React from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { Backdrop } from "./container";
 
 export const ManualInputSkel = ({
 	setOpen,
@@ -12,21 +13,18 @@ export const ManualInputSkel = ({
 	return (
 		<div className={styles.manualSearchContainer}>
 			<ManualInputForm />
-			<div
-				onClick={() => setOpen(false)}
-				className={styles.manualSearchBackdrop}
-			></div>
+			<Backdrop setOpen={setOpen} />
 		</div>
 	);
 };
 
 const ManualInputForm = () => {
 	return (
-		<div className={styles.manualSearch}>
+		<div className={`${styles.manualSearch} ${styles.manualSearchEntry}`}>
 			<div className={styles.header}>
 				<div></div>
 				<div>
-					<Skeleton height={24} width={160} />
+					<Skeleton height={23} width={160} />
 				</div>
 				<div></div>
 			</div>
