@@ -3,7 +3,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "../adhan.module.css";
 import "moment/min/locales";
-import { GetNextPrayer } from "@/libs/timing";
 import { ChevronDown, Hourglass, X } from "lucide-react";
 import { Haptic, HapticType } from "@/libs/mal";
 import { DevicePadding, DevicePaddingType } from "@/components/device/padding";
@@ -20,11 +19,6 @@ export const AppWidget = ({
 	const appDummy = useRef<HTMLDivElement>(null);
 	const appElem = useRef<HTMLDivElement>(null);
 	const [appOpen, setAppOpen] = useState(false);
-
-	const [x, setX] = useState(0);
-	const [y, setY] = useState(0);
-	const [width, setWidth] = useState(0);
-	const [height, setHeight] = useState(0);
 
 	const widgetContent = useRef<HTMLDivElement>(null);
 
@@ -104,8 +98,7 @@ export const AppWidget = ({
 				onAnimationEnd={(e) => {
 					if (appElem.current == null) return;
 					if (appDummy.current == null) return;
-
-					console.log(e.currentTarget.className);
+					if (e.currentTarget != e.target) return;
 
 					if (
 						appElem.current.classList.contains(
@@ -127,10 +120,12 @@ export const AppWidget = ({
 			>
 				<div
 					ref={widgetContent}
-					onTransitionEnd={() => {
+					onTransitionEnd={(e) => {
+						console.log(e.currentTarget);
 						if (appElem.current == null) return;
 						if (widgetContent.current == null) return;
 						if (appContent.current == null) return;
+						if (e.currentTarget != e.target) return;
 
 						if (!appOpen) {
 							widgetContent.current.classList.add(
@@ -140,6 +135,9 @@ export const AppWidget = ({
 								styles.appContainerShow
 							);
 						} else {
+							if (widgetContent.current == null) return;
+							if (appContent.current == null) return;
+
 							widgetContent.current.classList.remove(
 								styles.nextPrayerContentHide
 							);
@@ -162,10 +160,11 @@ export const AppWidget = ({
 							closeApp();
 						}
 					}}
-					onTransitionEnd={() => {
+					onTransitionEnd={(e) => {
 						if (appElem.current == null) return;
 						if (widgetContent.current == null) return;
 						if (appContent.current == null) return;
+						if (e.currentTarget != e.target) return;
 
 						if (!appOpen) {
 							widgetContent.current.classList.add(

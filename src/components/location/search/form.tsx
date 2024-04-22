@@ -2,9 +2,10 @@ import { Search } from "js-search";
 import { useState, useEffect, useRef } from "react";
 import styles from "./manual.module.css";
 import cities from "cities.json";
-import { SetCityManually } from "@/libs/location";
+import { AutoObtainCity, SetCityManually } from "@/libs/location";
 import { Dialogue } from "@/components/dialogue";
 import { useRouter } from "next/navigation";
+import { Navigation } from "lucide-react";
 
 export const ManualInputForm = () => {
 	const [searchQuery, setSearchQuery] = useState<string>("");
@@ -42,6 +43,14 @@ export const ManualInputForm = () => {
 					type="search"
 					ref={inputRef}
 				/>
+				<button
+					onClick={(e) => {
+						AutoObtainCity();
+					}}
+					className={styles.locatorButton}
+				>
+					<Navigation size={16} />
+				</button>
 			</div>
 			{searchQuery && (
 				<ManualInputResults query={searchQuery} engine={engine} />
